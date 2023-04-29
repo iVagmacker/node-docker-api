@@ -1,4 +1,4 @@
-import UniqueEntityId from "../../../shared/domain/unique-entity-id";
+import UniqueEntityId from "../../../shared/domain/value-objects/unique-entity-id";
 import { Category, CategoryProperties } from "./category";
 import { omit } from "lodash";
 
@@ -59,7 +59,7 @@ describe("Category Unit Tests", () => {
   });
 
   test("id field", () => {
-    type CategoryData = { props: CategoryProperties; id?: UniqueEntityId };
+    type CategoryData = { props: CategoryProperties; id?: UniqueEntityId};
     const data: CategoryData[] = [
       { props: { name: "Movie" } },
       { props: { name: "Movie" }, id: null },
@@ -70,7 +70,7 @@ describe("Category Unit Tests", () => {
     data.forEach((i) => {
       const category = new Category(i.props, i.id as any);
       expect(category.id).not.toBeNull();
-      expect(category.id).toBeInstanceOf(UniqueEntityId);
+      expect(category.uniqueEntityId).toBeInstanceOf(UniqueEntityId);
     });
   });
 
