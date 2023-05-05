@@ -3,10 +3,14 @@ import { Category, CategoryProperties } from "./category";
 import { omit } from "lodash";
 
 describe("Category Unit Tests", () => {
+  beforeEach(() => {
+    Category.validate = jest.fn();
+  });
   test("constructor of category", () => {
     let category = new Category({ name: "Movie" });
 
     let props = omit(category.props, "createdAt");
+    expect(Category.validate).toHaveBeenCalled();
 
     expect(props).toStrictEqual({
       name: "Movie",
@@ -59,7 +63,7 @@ describe("Category Unit Tests", () => {
   });
 
   test("id field", () => {
-    type CategoryData = { props: CategoryProperties; id?: UniqueEntityId};
+    type CategoryData = { props: CategoryProperties; id?: UniqueEntityId };
     const data: CategoryData[] = [
       { props: { name: "Movie" } },
       { props: { name: "Movie" }, id: null },
