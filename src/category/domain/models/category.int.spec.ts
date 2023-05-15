@@ -43,15 +43,6 @@ describe("Category Integration Tests", () => {
                 ]
             });
         });
-
-        // it('should a valid category', () => {
-        //     expect.assertions(0);
-        //     new Category({ name: "Movie" });
-        //     new Category({ name: "Movie", description: "some description" });
-        //     new Category({ name: "Movie", description: null });
-        //     new Category({ name: "Movie", description: "some description", isActive: false });
-        //     new Category({ name: "Movie", description: "some description", isActive: true });
-        // });
     });
 
     describe('update method', () => {

@@ -7,7 +7,7 @@ export type CategoryProperties = {
   name: string;
   description?: string;
   isActive?: boolean;
-  createdAt?: Date;
+  created_at?: Date;
 };
 
 export class Category extends Entity<CategoryProperties> {
@@ -16,7 +16,15 @@ export class Category extends Entity<CategoryProperties> {
     super(props, id);
     this.description = this.props.description;
     this.props.isActive = this.props.isActive ?? true;
-    this.props.createdAt = this.props.createdAt ?? new Date();
+    this.props.created_at = this.props.created_at ?? new Date();
+  }
+
+  activate() {
+    this.props.isActive = true;
+  }
+
+  deactivate() {
+    this.props.isActive = false;
   }
 
   update(name: string, description: string): void {
@@ -53,7 +61,7 @@ export class Category extends Entity<CategoryProperties> {
     this.props.isActive = value ?? null;
   }
 
-  get createdAt(): Date {
-    return this.props.createdAt;
+  get created_at(): Date {
+    return this.props.created_at;
   }
 }

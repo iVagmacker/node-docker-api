@@ -9,7 +9,7 @@ describe("Category Unit Tests", () => {
   test("constructor of category", () => {
     let category = new Category({ name: "Movie" });
 
-    let props = omit(category.props, "createdAt");
+    let props = omit(category.props, "created_at");
     expect(Category.validate).toHaveBeenCalled();
 
     expect(props).toStrictEqual({
@@ -18,19 +18,19 @@ describe("Category Unit Tests", () => {
       isActive: true,
     });
 
-    expect(category.props.createdAt).toBeInstanceOf(Date);
+    expect(category.props.created_at).toBeInstanceOf(Date);
 
     category = new Category({
       name: "Movie",
       description: "some description",
       isActive: false,
     });
-    let createdAt = new Date();
+    let created_at = new Date();
     expect(category.props).toStrictEqual({
       name: "Movie",
       description: "some description",
       isActive: false,
-      createdAt,
+      created_at,
     });
 
     category = new Category({
@@ -51,14 +51,14 @@ describe("Category Unit Tests", () => {
       isActive: true,
     });
 
-    createdAt = new Date();
+    created_at = new Date();
     category = new Category({
       name: "Movie",
-      createdAt,
+      created_at,
     });
     expect(category.props).toMatchObject({
       name: "Movie",
-      createdAt,
+      created_at,
     });
   });
 
@@ -109,12 +109,12 @@ describe("Category Unit Tests", () => {
     expect(category.isActive).toBeFalsy();
   });
 
-  test("getter of createdAt field", () => {
+  test("getter of created_at field", () => {
     let category = new Category({ name: "Movie" });
-    expect(category.createdAt).toBeInstanceOf(Date);
+    expect(category.created_at).toBeInstanceOf(Date);
 
-    let createdAt = new Date();
-    category = new Category({ name: "Movie", createdAt });
-    expect(category.createdAt).toBe(createdAt);
+    let created_at = new Date();
+    category = new Category({ name: "Movie", created_at });
+    expect(category.created_at).toBe(created_at);
   });
 });

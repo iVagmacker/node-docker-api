@@ -13,20 +13,20 @@ describe('CategoryValidator Tests', () => {
             ]
         });
 
-        expect({ validator, data: {name: "" }}).containsErrorMessages({
+        expect({ validator, data: { name: "" } }).containsErrorMessages({
             name: [
                 'name should not be empty',
             ]
         });
 
-        expect({ validator, data: {name: 5 as any } }).containsErrorMessages({
+        expect({ validator, data: { name: 5 as any } }).containsErrorMessages({
             name: [
                 'name must be a string',
                 'name must be shorter than or equal to 255 characters'
             ]
         });
 
-        expect({ validator, data: {name: "t".repeat(256) }}).containsErrorMessages({
+        expect({ validator, data: { name: "t".repeat(256) } }).containsErrorMessages({
             name: [
                 'name must be shorter than or equal to 255 characters'
             ]
@@ -50,7 +50,7 @@ describe('CategoryValidator Tests', () => {
     });
 
     test('valid cases for fields', () => {
-        const arrange = [
+        const arrange: { name: string, description?: string | null, isActive?: boolean }[] = [
             { name: "some value" },
             { name: "some value", description: undefined },
             { name: "some value", description: null },

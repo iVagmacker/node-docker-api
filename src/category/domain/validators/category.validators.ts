@@ -18,10 +18,10 @@ export class CategoryRules {
     
     @IsDate()    
     @IsOptional()
-    createdAt: Date;
+    created_at: Date;
 
-    constructor({ name, description, isActive, createdAt }: CategoryProperties) {
-        Object.assign(this, { name, description, isActive, createdAt });
+    constructor({ name, description, isActive, created_at }: CategoryProperties) {
+        Object.assign(this, { name, description, isActive, created_at });
     }
 };
 
