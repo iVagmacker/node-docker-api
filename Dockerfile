@@ -1,7 +1,9 @@
-FROM node:14.15.4-slim
+FROM node:14.17.0-slim
+
+RUN npm install -g @nestjs/cli@8.2.5 npm@8.5.5
 
 USER node
 
 WORKDIR /home/node/app
 
-CMD [ "sh", "-c", "npm install && tail -f /dev/null" ]
+CMD [ "tail", "-f", "/dev/null" ]
